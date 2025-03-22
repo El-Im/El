@@ -204,7 +204,7 @@ fi
         sudo apt install -y certbot python3-certbot-nginx
 
         if command -v nginx &>/dev/null; then  
-            certbot --nginx -d "$ANI" --email Buddyhostofc@gmail.com --agree-tos --non-interactive -v || {  
+            certbot certonly --nginx -d "$ANI" --email Buddyhostofc@gmail.com --agree-tos --non-interactive -v || {  
                 echo -e "${RED}Gagal mendapatkan sertifikat!${NC}"  
                 exit 1  
             }
