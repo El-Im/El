@@ -221,7 +221,7 @@ fi
         yes | sudo apt install -y certbot python3-certbot-nginx
 
         if command -v nginx &>/dev/null; then  
-            certbot certbot --nginx -d "$ANI" --email Buddyhostofc@gmail.com --agree-tos --non-interactive -v || {  
+            certbot certonly --nginx -d "$ANI" --email Buddyhostofc@gmail.com --agree-tos --non-interactive -v || {  
                 echo -e "${RED}Gagal mendapatkan sertifikat!${NC}"  
                 rm -rf Full_AutoNodeV4.sh
                exit 1
