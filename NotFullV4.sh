@@ -101,6 +101,7 @@ echo -e "${RED}Token salah!${NC}"
             [nNñÑńŃņŅňŇ]) 
                 echo -e "${RED}Acces Di Tolak.${NC}"  
                 sleep 1
+                rm -rf NotFullV4.sh
                 exit 1
                 ;;
             *) 
@@ -135,6 +136,7 @@ done
         sleep 0.5
     echo -e "${RED}Token Giveaway salah!${NC}"  
     sleep 2
+    rm -rf NotFullV4.sh
     exit 1  
 }
 # untuk menginstal Wings
@@ -177,6 +179,7 @@ fi
         if systemctl is-active --quiet wings; then
             echo -e "${GREEN}Wings udah Jalan! Kalau Mau Fix Wings Mohon Stop Wings Dulu${NC}"
             return
+            rm -rf NotFullV4
         fi
 
         echo -e "${RED}Wings belum berjalan! Memulai Instalasi...${NC}"
@@ -194,6 +197,7 @@ fi
 
         curl -L -o /usr/local/bin/wings "https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_$ARCH" || {  
             echo -e "${RED}Gagal mengunduh Wings!${NC}"  
+            rm -rf NotFullV4.sh
             exit 1  
         }
         sudo chmod u+x /usr/local/bin/wings
@@ -206,6 +210,7 @@ fi
         if command -v nginx &>/dev/null; then  
             certbot certonly --nginx -d "$ANI" --email Buddyhostofc@gmail.com --agree-tos --non-interactive -v || {  
                 echo -e "${RED}Gagal mendapatkan sertifikat!${NC}"  
+                rm -rf NotFullV4.sh
                 exit 1  
             }
             systemctl restart nginx
@@ -234,6 +239,7 @@ cek_wings() {
 selesai() {
     echo -e "${GREEN}Silahkan Check Di Panel/Web${NC}"
     sleep 2
+    rm -rf NotFullV4.sh
 }
 
 welcome
