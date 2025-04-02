@@ -14,10 +14,17 @@ check_token() {
 }
 
 # Install Paket
-install_packages() {
+check_packages() {
     local packages=("docker" "nginx" "git" "certbot" "python3-certbot-nginx" "jq")
-    echo -e "${YELLOW}Menginstal paket yang diperlukan...${NC}"
-    parallel -j 4 "dpkg -s {} &>/dev/null || apt install -y {}" ::: "${packages[@]}"
+    for pkg in "${packages[@]}"; do  
+        if ! command -v "$pkg" &>/dev/null; then  
+            echo -e "${YELLOW}Downloading $pkg...${NC}"  
+            yes | sudo apt install -y "$pkg"
+            clear 
+        else  
+            echo -e "${GREEN}$pkg Installed...${NC}"  
+        fi  
+    done
 }
 
 # Instal Wings
@@ -80,7 +87,7 @@ install_wings() {
 }
 
 check_token
-install_packages
+check_packages
 install_wings
 rm -rf fast.sh
 echo -e "${GREEN}Instalasi Selesai!${NC}"
