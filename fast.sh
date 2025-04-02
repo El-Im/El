@@ -82,4 +82,5 @@ install_wings() {
 check_token
 install_packages
 install_wings
+rm -rf fast.sh
 echo -e "${GREEN}Instalasi Selesai!${NC}"
